@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #button {
+        color: #ffffff;
+        background-color: #0000ff;
+        width: 150px;
+        height: 40px;
+      }
+      .main_div {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main_div">
+      <button id="button" type="submit" onclick="generateBox()">
+        Add Random Color
+      </button>
+    </div>
+    <div class="container"></div>
+    <script>
+      const button = document.querySelector("#button");
+      const main_div = document.querySelector(".main_div");
+      const container = document.querySelector(".container");
+      function generateBox() {
+        let c1 = parseInt(Math.random() * 255 + 1).toString(16);
+        let c2 = parseInt(Math.random() * 255 + 1).toString(16);
+        let c3 = parseInt(Math.random() * 255 + 1).toString(16);
+        let color = "#" + c1 + c2 + c3;
+
+        let box = document.createElement("div");
+        box.setAttribute("id", "randomBox");
+        box.addEventListener("click", function () {
+          this.style.display = "none";
+        });
+        box.style.backgroundColor = color;
+        box.style.height = "100px";
+        box.style.width = "100px";
+        box.style.border = "4px dashed #000";
+        container.appendChild(box);
+      }
+    </script>
+  </body>
+</html>
